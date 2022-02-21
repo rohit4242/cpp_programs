@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
     // find the prime number of the given numbers of the range
-    int n, i, j, k, l, m, count = 0;
+    int n, i, j, k, count = 0;
     cout << "Enter the range of the prime numbers: ";
     cin >> n;
     int prime[n];
