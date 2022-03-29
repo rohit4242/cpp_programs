@@ -9,13 +9,16 @@ int main()
 {
     int numbers[10], i, lowest=0, sum=0;
 
-    cout << "Enter 10 numbers: ";
+    cout << "Enter 10 numbers"<<endl;
 
     for (i = 0; i < 10; i++)
     {
         cout << "Enter a number: ";
         cin >> numbers[i];
+
         sum += numbers[i];
+        lowest = numbers[0];
+        
         if (numbers[i] < lowest)
         {
             lowest = numbers[i];
