@@ -7,20 +7,20 @@ using namespace std;
 
 int main()
 {
-    int i, sum = 0, largest = 0, average;
+    int i, sum = 0, lowest = 0, average;
     for (i = 0; i < 10; i++)
     {
         int number;
         cout << "Enter the number: ";
         cin >> number;
         sum += number;
-        if (number > largest)
+        if (number < lowest)
         {
-            largest = number;
+            lowest = number;
         }
     }
     average = sum / 10;
     cout << "The average of the numbers is: " << average << endl;
-    cout << "The largest of the numbers is: " << largest << endl;
+    cout << "The largest of the numbers is: " << lowest << endl;
     return 0;
 }
