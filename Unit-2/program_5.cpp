@@ -14,7 +14,7 @@ int main()
 {
     int marks[5], i, average=0, highest=0, count=0, lowest=0, sum=0;
 
-    cout << "Enter 5 marks: ";
+    cout << "Enter 5 marks"<<endl;
 
     for (i = 0; i < 5; i++)
     {
@@ -25,6 +25,7 @@ int main()
         {
             highest = marks[i];
         }
+        lowest = marks[0];
         if (marks[i] < lowest)
         {
             lowest = marks[i];
