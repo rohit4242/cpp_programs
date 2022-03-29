@@ -6,9 +6,12 @@ using namespace std;
 
 int main()
 {
-    int number;
-    cout << "Enter the number: ";
-    cin >> number;
-    cout << "The number is: " << number << endl;
+    int a = 10;
+    int &b = a;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+    b = 20;
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
     return 0;
 }
