@@ -30,14 +30,13 @@ class employees{
         }
         void display_employee()
         {
+            cout << "====================="<< endl;
             cout << "Employee number: " << employee_number << endl;
             cout << "Name: " << name << endl;
             cout << "Address: " << address << endl;
             cout << "Number of dependents: " << dependents << endl;
-            cout << "====================="<< endl;
         }
 };
-
 
 int main()
 {
@@ -46,10 +45,7 @@ int main()
     {
         emp[i].insert_employee();
     }
-    // for(int i=0; i<2; i++)
-    // {
-    //     emp[i].display_employee();
-    // }
+   
     for(int i=0; i<2; i++)
     {
         if(emp[i].dependents > 2)
