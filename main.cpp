@@ -1,42 +1,57 @@
 #include <iostream>
 using namespace std;
 
-class parent_1
+class stu
 {
+    string name;
+    int roll;
     public:
     
-    void display_1()
+    void get_info()
     {
-        cout << "parent class 1" << endl;
+        cout << "Enter name: ";
+        cin >> name;
+        cout << "Enter roll: ";
+        cin >> roll;
     }
-};
 
-class parent_2: public parent_1
-{
-
-    public:
-
-    void display_2()
-    {
-        cout << "parent class 2" << endl;
-    }   
-};
-
-class child : public parent_2
-{
-    public:
-    
     void display()
     {
-        cout << "child class" << endl;
+        cout << "Name: " << name << endl;
+        cout << "Roll: " << roll << endl;
     }
 };
+
+class student : public stu
+{
+    int marks[5];
+    public:
+    
+    void get_marks()
+    {
+        for(int i = 0; i < 5; i++) {
+            cout << "Enter marks: ";
+            cin >> marks[i];
+        }
+    }
+
+    void display_marks()
+    {
+        cout << "Marks: ";
+        for(int i = 0; i < 5; i++) {
+            cout << marks[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
 
 int main()
 {
-    child c;
-    c.display_1();
-    c.display_2();
-    c.display();
+    student s;
+    s.get_info();
+    s.get_marks();
+    s.display();
+    s.display_marks();
     return 0;
 }
