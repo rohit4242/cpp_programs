@@ -32,7 +32,7 @@ class time
         cin >> second;
     }
 
-     void display_time()
+    void display_time()
     {
         cout << "Your Time is = " <<hour<< ":" <<minute << ":" <<second<<endl;
     }
@@ -77,11 +77,11 @@ int main()
 {
     time t1(1,2,3), t2, t3, t4;
 
-    // t1.get_time();
+    t1.get_time();
     t2.get_time();
 
     t1.display_time();
-    // t2.display_time();
+    t2.display_time();
 
     t3.add_time(t1,t2);
     t3.display_time();
