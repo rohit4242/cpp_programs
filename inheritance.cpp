@@ -11,18 +11,17 @@ class parent_1
     }
 };
 
-class parent_2: public parent_1
+class parent_2 
 {
-
     public:
-
+    
     void display_2()
     {
         cout << "parent class 2" << endl;
     }   
 };
 
-class child : public parent_2
+class child : public parent_1 ,public parent_2
 {
     public:
     
