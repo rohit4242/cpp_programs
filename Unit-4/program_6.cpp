@@ -11,7 +11,6 @@ class Counter
 {
     public:
         int count;
-
         Counter()
         {
             count = 0;
