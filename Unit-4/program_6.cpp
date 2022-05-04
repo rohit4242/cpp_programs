@@ -44,7 +44,8 @@ int main(){
     c.dec();
     cout << c.count << endl;
 
-    c.inc();
+    c.dec();
     cout << c.count << endl;
+
     return 0;
 }
