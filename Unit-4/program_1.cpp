@@ -6,3 +6,6 @@
 // ReadDetails() in all above classes. All array elements 
 // should be able to be accessed in the same routine 
 // irrespective of their type.
+
+#include <iostream>
+using namespace std;
