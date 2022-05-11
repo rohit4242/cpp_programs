@@ -1,6 +1,6 @@
 
-#include <iostream.h>
-#include <conio.h>
+#include <iostream>
+using namespace std;
 
 class time
 {
@@ -18,7 +18,7 @@ class time
     }
     void display()
     {
-	cout << hour << ":" << minute << ":" << second << endl;
+	    cout << hour << ":" << minute << ":" << second << endl;
     }
     friend  time operator + (time t1,time t2);
 
@@ -45,12 +45,9 @@ class time
 
 int main()
 {
-    clrscr();
-
     time t1(1, 2, 3), t2(4, 5, 6);
 
     time t3 = t1 + t2;
     t3.display();
-    getch();
     return 0;
 }
