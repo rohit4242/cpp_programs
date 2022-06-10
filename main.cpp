@@ -1,154 +1,90 @@
-// This problem is to implement disjoint set union. There will be 2 incomplete functions namely union and find. You have to complete these functions. 
+// Help a Thief!!! 
 
-// Union: Join two subsets into a single set.
-// isConnected: Determine which subset a particular element is in. This can be used for determining if two elements are in same subset.
+// You have to help a thief to steal as many as GoldCoins as possible from a GoldMine. There he saw N Gold Boxes an each Gold Boxes consists of Ai Plates each plates consists of Bi Gold Coins. Your task is to print the maximum gold coins theif can steal if he can take a maximum of T plates.
+
+ 
 
 // Example 1:
 
 // Input:
-// N = 5
-// q = 4
-// Queries = 
-// Union(1,3)
-// isConnected(1,2)
-// Union(1,5)
-// isConnected(3,5)
+// T = 3, N = 3 
+// A[] = {1, 2, 3}
+// B[] = {3, 2, 1}
 // Output:
-// 0
-// 1
-// Explanation: Initially all nodes 1 2 3 4 5
-// are not connected. 
-// After Union(1,3), node 1 and 3 will be
-// connected.
-// When we do isConnected(1,2),  as node 1
-// and 2 are not connected it will return 0.
-// After Union(1,5), node 1 and 5 will be
-// connected.
-// When we do isConnected(3,5),  as node
-// 1 and 3 are connected, and node 1 and 5
-// are connected, hence 3 and 5 are
-// connected. Thus it will return 1.
+// 7
+// Explanation:
+// The thief will take 1 plate of coins
+// from the first box and 2 plate of coins
+// from the second plate. 3 + 2*2 = 7.
 // Example 2:
 
 // Input:
-// N = 5
-// q = 4
-// Queries = 
-// Union(1,4)
-// Union(1,5)
-// isConnected(2,3)
-// Union(3,4)
-// Output: 0
+// T = 0, N = 3 
+// A[] = {1, 3, 2}
+// B[] = {2, 3, 1}
+// Output:
+// 0
+// Explanation:
+// The thief can't take any plates.
+// So he can't steal any coins.
+ 
+
 // Your Task:
+// You don't need to read input or print anything. Your task is to complete the function maxCoins() which takes 2 Integers T, and N and two arrays A and B of size N as input and returns the maximum number of gold coins the thief can steal if he can take a maximum of T plates.
 
-// You have to complete the function union_() which merges the node1 and node2. You will also have to complete the function isConnected() which will return whether the two nodes are connected.
+ 
 
-// Note: Both function will contain two arrays par[] and ranks1[] along with two nodes. Initially par[i] = i and rank1[i] = 1 
+// Expected Time Complexity: O(N*logN)
+// Expected Auxiliary Space: O(N)
 
-// Expected Time Complexity: O(N + Q).
-// Expected Auxiliary Space: O(1).
+ 
 
-// Constraints: 
-// 1 <= N <= 105
-// 1<= Q <= 105
-// 1 <= node1, node2 <= N
-
-// { Driver Code Starts
-//Initial Template for C++
-
+// Constraints:
+// 0 <= T,N <= 104
+// 1 <= A[i] <= 104
+// 1 <= B[i] <= 104
 
 #include <bits/stdc++.h>
 using namespace std;
 
-
- // } Driver Code Ends
-//User function Template for C++
-
-class Solution
-{
-    public:
-    //Function to merge two nodes a and b.
-    void union_( int a, int b, int par[], int rank1[]) 
-    {
-        //code here
-		int x = find_(a, par);
-		int y = find_(b, par);
-		if(x == y)
-			return;
-		if(rank1[x] > rank1[y])
-			par[y] = x;
-		else
-		{
-			par[x] = y;
-			if(rank1[x] == rank1[y])
-				rank1[y]++;
-
-		}
-    }
-    
-    //Function to check whether 2 nodes are connected or not.
-    bool isConnected(int x,int y, int par[], int rank1[])
-    {
-        //code here
-		int x_ = find_(x, par);
-		int y_ = find_(y, par);
-		if(x_ == y_)
-			return true;
-		return false;
-
+class Solution {
+  public:
+    int maxCoins(int A[], int B[], int T, int N) {
+        // code here
+        int coins = 0;
+        while (T--){
+            int maks = -1, maksindex = -1;
+            for (int i = 0; i < N; i++){
+                if (A[i] > 0 and maks < B[i]){
+                    maks = B[i];
+                    maksindex = i;
+                }
+            }
+            coins += B[maksindex];
+            A[maksindex]--;
+           
+        }
+        return coins;
     }
 
-	int find_(int x, int par[])
-	{
-		if(par[x] == x)
-			return x;
-		return find_(par[x], par);
-	}
-	
 };
 
-// { Driver Code Starts.
-
 int main() {
-    //taking number of testcases
     int t;
-    cin>>t;
-    while(t--) {
+    cin >> t;
+    while (t--) {
+        int T,N;
+        cin>>T>>N;
         
-        //taking number of elements
-        int n;
-        cin>>n;
+        int A[N], B[N];
         
-        
-        int par[n+1];
-        int rank1[n+1];
+        for(int i=0; i<N; i++)
+            cin>>A[i];
+        for(int i=0; i<N; i++)
+            cin>>B[i];
 
-        //initializing the parent and
-        //the rank array
-        for(int i=1; i<=n; i++) {
-            par[i] = i;
-            rank1[i] = 1;
-    }
-    
-    //taking number of queries
-    Solution obj;
-    int q;
-    cin>>q;
-    while(q--) {    
-        int a,b;
-        char c;
-        cin>>c>>a>>b;
-        
-        //if query type is 'U'
-        //then calling union_ method
-        if(c=='U')
-        {
-            obj.union_(a,b, par, rank1);
-        }
-        else//else calling isConnected() method
-        cout<<obj.isConnected(a,b, par, rank1)<<endl;
-    }
+        Solution ob;
+        cout << ob.maxCoins(A,B,T,N) << endl;
     }
     return 0;
-}
-  // } Driver Code Ends
+} 
