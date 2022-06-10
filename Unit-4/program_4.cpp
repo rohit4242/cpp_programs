@@ -1,36 +1,51 @@
-// 4) Implement single, multiple, multilevel, hierarchical and 
-// hybrid inheritance using specific example. 
+// 6) Base Class Name →Counter ; data member → count ; 
+// member functions → default constructor to set count to 
+// 0, inc() Derived Class Name →Countdown; data member 
+// → none; member functions → dec() Note : inc() & dec() 
+// must return the count values
 
 #include <iostream>
 using namespace std;
 
-class A {
+class Counter
+{
     public:
-        void A1() {
-            cout << "A1" << endl;
+        int count;
+        Counter()
+        {
+            count = 0;
+        }
+        void inc()
+        {
+            ++count;
         }
 };
 
-class B : public A {
+class Countdown : public Counter
+{
     public:
-        void B1() {
-            cout << "B1" << endl;
+        void dec()
+        {
+            --count;
         }
 };
 
-class C : public B {
-    public:
-        void C1() {
-            cout << "C1" << endl;
-        }
-};
+int main(){
+    Countdown c;
+    c.inc();
+    cout << c.count << endl;
+    
+    c.inc();
+    cout << c.count << endl;
 
-int main() {
-    C c;
-    c.A1();
-    c.B1();
-    c.C1();
+    c.inc();
+    cout << c.count << endl;
+
+    c.dec();
+    cout << c.count << endl;
+
+    c.dec();
+    cout << c.count << endl;
 
     return 0;
 }
-

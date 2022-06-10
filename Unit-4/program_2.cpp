@@ -1,82 +1,33 @@
-// 2) Define Student class having member data rollno, name, m1, 
-// m2, m3, per, result member functions getdata(), dispdata(), 
-// cal() for inline functions with reference to class.
+// 3) Illustrate the use of this pointer
 
 #include <iostream>
 using namespace std;
 
-class student
-{
+class MyClass {
+    
     private:
-        int rollno;
-        string name;
-        int marks[3];
-        float per;
-        string result;
-        char grade;
+        int x;
     public:
-        void getdata()
-        {
-            cout << "Enter rollno: ";
-            cin >> rollno;
-            cout << "Enter name: ";
-            cin >> name;
 
-            cout << "Enter m1: ";
-            cin >> marks[0];
-            cout << "Enter m2: ";
-            cin >> marks[1];
-            cout << "Enter m3: ";
-            cin >> marks[2];
-            cal();
-        }
-        void dispdata()
-        {
-            cout << "================="<< endl;
-            cout << "Rollno: " << rollno << endl;
-            cout << "Name: " << name << endl;
-            cout << "M1: " << marks[0] << endl;
-            cout << "M2: " << marks[1] << endl;
-            cout << "M3: " << marks[2] << endl;
-            cout << "Per: " << per << endl;
-            cout << "Grade: " << grade << endl;
-            cout << "Result: " << result << endl;
+        MyClass(int x) {
+            this->x = x;
         }
 
-        inline void cal()
-        {
-            per = ((marks[0]+marks[1]+marks[2])/3);
-            if(per >= 80)
-            {
-                result = "Pass";
-            }
-            else
-            {
-                result = "Fail";
-            }
-            if(per >= 80)
-            {
-                grade = 'A';
-            }
-            else if(per >= 60)
-            {
-                grade = 'B';
-            }
-            else if(per >= 40)
-            {
-                grade = 'C';
-            }
-            else
-            {
-                grade = 'D';
-            }
+        void setX(int x) {
+            this->x = x;
+        }
+
+        void printX() {
+            cout << "x = " << x << endl;
         }
 };
 
 int main()
-{
-    student s;
-    s.getdata();
-    s.dispdata();
+{  
+    MyClass *myClass = new MyClass(500);
+    myClass->printX();
+    myClass->setX(1000);
+    myClass->printX();
+    delete myClass;
     return 0;
 }

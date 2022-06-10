@@ -52,12 +52,14 @@ class program_7_1 : public program_7
 
 int main()
 {
-    program_7 p;
+    program_7_1 p;
     p.getdata();
     p.dispdata();
     p.add();
     p.dispdata();
     p.sub();
+    p.dispdata();    
+    p.mul();
     p.dispdata();
     return 0;
 }

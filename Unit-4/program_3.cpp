@@ -1,33 +1,36 @@
-// 3) Illustrate the use of this pointer
+// 4) Implement single, multiple, multilevel, hierarchical and 
+// hybrid inheritance using specific example. 
 
 #include <iostream>
 using namespace std;
 
-class MyClass {
-    
-    private:
-        int x;
+class A {
     public:
-
-        MyClass(int x) {
-            this->x = x;
-        }
-
-        void setX(int x) {
-            this->x = x;
-        }
-
-        void printX() {
-            cout << "x = " << x << endl;
+        void A1() {
+            cout << "A1" << endl;
         }
 };
 
-int main()
-{  
-    MyClass *myClass = new MyClass(500);
-    myClass->printX();
-    myClass->setX(1000);
-    myClass->printX();
-    delete myClass;
+class B : public A {
+    public:
+        void B1() {
+            cout << "B1" << endl;
+        }
+};
+
+class C : public B {
+    public:
+        void C1() {
+            cout << "C1" << endl;
+        }
+};
+
+int main() {
+    C c;
+    c.A1();
+    c.B1();
+    c.C1();
+
     return 0;
 }
+
